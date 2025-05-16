@@ -1,4 +1,14 @@
-# Echo
+```ascii
+    _____ ____ _   _  ___  
+   | ____/ ___| | | |/ _ \ 
+   |  _|| |   | |_| | | | |
+   | |__| |___|  _  | |_| |
+   |_____\____|_| |_|\___/ 
+                      
+   by nortezh.com
+```
+
+# Echo by [nortezh.com](https://nortezh.com)
 
 [![License: Unlicensed](https://img.shields.io/badge/license-Unlicensed-blue.svg)](LICENSE)
 
@@ -109,3 +119,6 @@ X-Real-Ip: 127.0.0.1
 ## License
 
 This project is currently unlicensed.
+
+---
+Brought to you by [nortezh.com](https://nortezh.com)
