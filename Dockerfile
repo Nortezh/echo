@@ -18,7 +18,7 @@ COPY . .
 RUN pnpm run build
 
 # Production stage
-FROM node:20-alpine AS production
+FROM oven/bun:1.2-alpine AS production
 
 WORKDIR /app
 
@@ -34,5 +34,5 @@ ENV PORT=3000
 # Expose application port
 EXPOSE 3000
 
-# Run the application
-CMD ["node", "dist/main"] 
+# Run the application with Bun
+CMD ["bun", "run", "dist/main"] 
