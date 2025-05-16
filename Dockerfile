@@ -1,38 +1,21 @@
-FROM node:20-alpine AS build
+FROM oven/bun:1.2-alpine
 
 WORKDIR /app
 
 # Copy package files
-COPY package.json pnpm-lock.yaml ./
-
-# Install pnpm
-RUN npm install -g pnpm
+COPY package.json bun.lock ./
 
 # Install dependencies
-RUN pnpm install
+RUN bun install
 
 # Copy the rest of the application
 COPY . .
 
 # Build the application
-RUN pnpm run build
-
-# Production stage
-FROM oven/bun:1.2-alpine AS production
-
-WORKDIR /app
-
-# Copy built assets from build stage
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/package.json ./
-
-# Set NODE_ENV
-ENV NODE_ENV=production
-ENV PORT=3000
+RUN bun run build
 
 # Expose application port
 EXPOSE 3000
 
-# Run the application with Bun
+# Run the application
 CMD ["bun", "run", "dist/main"] 
