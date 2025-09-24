@@ -44,6 +44,23 @@ jobs:
           file: ./Dockerfile
           tags: |
             ghcr.io/${{ steps.repository.outputs.lowercase }}:${{ steps.short_sha.outputs.sha_short }}
+      - name: Deploy To Nortezh.com
+        uses: Nortezh/nortezh-action@v1
+        with:
+          action: deployment.create-revision
+          project: echo
+          location: olufy-0
+          name: echo
+          image: ghcr.io/${{ steps.repository.outputs.lowercase }}:${{ steps.short_sha.outputs.sha_short }}
+          port: 80
+          type: WebService
+          env: |
+            PORT=80
+            DB_URL=localhost:5432
+            EXAMPLE=A
+        env:
+          SA_AUTH_EMAIL: ${{ secrets.SA_AUTH_EMAIL }}
+          SA_AUTH_KEY: ${{ secrets.SA_AUTH_KEY }}
       - name: Set output variables
         id: set_image_name
         run: echo "image_name=ghcr.io/${{ steps.repository.outputs.lowercase }}:${{ steps.short_sha.outputs.sha_short }}" >> $GITHUB_OUTPUT
