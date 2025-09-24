@@ -57,7 +57,7 @@ jobs:
           env: |
             PORT=80
             DB_URL=localhost:5432
-            EXAMPLE=A
+            EXAMPLE_A=A
         env:
           SA_AUTH_EMAIL: ${{ secrets.SA_AUTH_EMAIL }}
           SA_AUTH_KEY: ${{ secrets.SA_AUTH_KEY }}
