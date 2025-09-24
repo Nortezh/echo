@@ -45,7 +45,7 @@ jobs:
           tags: |
             ghcr.io/${{ steps.repository.outputs.lowercase }}:${{ steps.short_sha.outputs.sha_short }}
       - name: Deploy To Nortezh.com
-        uses: Nortezh/nortezh-action@v1
+        uses: Nortezh/nortezh-action@v1.2.0
         with:
           action: deployment.create-revision
           project: echo
